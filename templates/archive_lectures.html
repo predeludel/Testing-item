@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-wrap">
+        {% for i in lectures_list %}
+        {% if i.id in complete_lectures_ids %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.text[0:100]+"..."}}</p>
+                <form action="/archive_lecture{{i.id}}" method="post">
+                    <button type="submit" class="btn btn-outline-secondary">Читать</button>
+                    <p>
+                        <br>
+                        <mark>ПРОЙДЕНО</mark>
+                    </p>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

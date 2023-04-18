@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="list-group">
+        <form action="/lectures" method="post">
+            <button type="submit" class="btn btn-outline-secondary list-group-item list-group-item-action">
+                Лекции
+            </button>
+        </form>
+        <form action="/tests" method="post">
+            <button type="submit" class="btn btn-outline-secondary list-group-item list-group-item-action">
+                Тесты
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

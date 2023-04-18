@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+
+    <h class="h4 ">Ваш текущий уровень
+        <h class="h4 text-muted">{{user.user_lvl}}</h>
+    </h>
+
+    <p class="">Вам рекомендованы следующие
+        материалы:
+    </p>
+
+    {% if lecture != None %}
+    <p class="text-info">Лекция:</p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{lecture.title}}</h5>
+            <p class="card-text">{{lecture.text[0:100]+"..."}}</p>
+            <form action="/lecture{{lecture.id}}" method="post">
+                <button type="submit" class="btn btn-outline-secondary">Читать</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if test != None %}
+    <p class="text-info">Тесты:</p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{test.name}}</h5>
+            <form action="/show_test{{test.id}}" method="post">
+                <button type="submit" class="btn btn-outline-secondary">Пройти</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-wrap">
+        {% for i in lectures_list %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.text[0:100]+"..."}}</p>
+                <form action="/lecture{{i.id}}" method="post">
+                    <button type="submit" class="btn btn-outline-secondary">Читать</button>
+                    {% if i.id in complete_lectures_ids%}
+
+                    <p>
+                        <br>
+                        <mark>ПРОЙДЕНО</mark>
+                    </p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
